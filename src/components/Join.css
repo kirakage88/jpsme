@@ -1,0 +1,141 @@
+.join {
+  background: var(--bg);
+}
+
+.join__inner {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 72px;
+  align-items: start;
+}
+
+.join__content .section-head {
+  margin-bottom: 0;
+}
+
+.join__socials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 40px;
+}
+
+.join__social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  background: var(--surface);
+  padding: 20px 22px;
+  color: var(--accent);
+  transition: background-color 0.2s ease;
+}
+
+.join__social:hover {
+  background: var(--gold-wash);
+}
+
+.join__social-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.join__social-text strong {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--heading);
+  font-size: 17px;
+  letter-spacing: 0.5px;
+}
+
+.join__social-text small {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.join__emails {
+  list-style: none;
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.join__emails li {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.5fr) 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.join__email-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.join__emails a {
+  color: var(--text);
+  font-size: 15.5px;
+  text-decoration-color: rgba(212, 168, 83, 0.5);
+  text-underline-offset: 3px;
+}
+
+.join__emails a:hover {
+  color: var(--heading);
+  text-decoration-color: var(--gold);
+}
+
+.join__cta {
+  margin-top: 36px;
+}
+
+.join__qr {
+  justify-self: end;
+  width: min(320px, 100%);
+  background: var(--surface);
+}
+
+.join__qr img {
+  width: 100%;
+  mix-blend-mode: multiply;
+}
+
+[data-theme='dark'] .join__qr img {
+  mix-blend-mode: normal;
+  background: #fff;
+}
+
+.join__qr figcaption {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 960px) {
+  .join__inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .join__qr {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .join__socials {
+    grid-template-columns: 1fr;
+  }
+
+  .join__emails li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

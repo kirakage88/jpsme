@@ -1,0 +1,194 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  color: var(--heading);
+  line-height: 1.05;
+}
+
+::selection {
+  background: rgba(212, 168, 83, 0.35);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.container {
+  width: min(1160px, 100% - 48px);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: 112px;
+}
+
+/* Blueprint registration mark: one short gold rule above each section title. */
+.section-head {
+  margin-bottom: 56px;
+  position: relative;
+  padding-top: 22px;
+}
+
+.section-head::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 56px);
+  letter-spacing: 1px;
+  max-width: 14ch;
+}
+
+.section-sub {
+  max-width: 56ch;
+  color: var(--text-muted);
+  margin-top: 18px;
+  font-size: 17px;
+}
+
+/* Framed artifact plate: hairline frame with offset outer frame. */
+.plate {
+  position: relative;
+  border: 1px solid rgba(212, 168, 83, 0.55);
+  padding: 14px;
+  background: rgba(212, 168, 83, 0.04);
+}
+
+.plate::before {
+  content: '';
+  position: absolute;
+  inset: -9px;
+  border: 1px solid rgba(212, 168, 83, 0.25);
+  pointer-events: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  font-size: 15px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.18s ease, background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--primary {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-color: var(--btn-bg);
+}
+
+.btn--primary:hover {
+  background: transparent;
+  color: var(--heading);
+  border-color: var(--heading);
+}
+
+.btn--gold {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+
+.btn--gold:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+.btn--ghost {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+
+.btn--ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+section[id] {
+  scroll-margin-top: 60px;
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding-block: 72px;
+  }
+
+  .section-head {
+    margin-bottom: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
