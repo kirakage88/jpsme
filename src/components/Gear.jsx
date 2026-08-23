@@ -1,28 +1,31 @@
-function Gear({ size = 64, className = '', duration = 80, reverse = false }) {
+import { gearMetrics } from './gearMetrics'
+
+function Gear({ size = 64, teeth = 12, phase = 0, className = '', duration = 80, reverse = false, style }) {
+  const m = gearMetrics(teeth)
   return (
     <svg
-      viewBox="0 0 100 100"
+      viewBox={`${-m.box} ${-m.box} ${m.box * 2} ${m.box * 2}`}
       width={size}
       height={size}
       className={`gear ${className}`}
       style={{
         '--gear-duration': `${duration}s`,
         '--gear-direction': reverse ? 'reverse' : 'normal',
+        ...style,
       }}
       aria-hidden="true"
     >
       <circle
-        cx="50"
-        cy="50"
-        r="38"
+        r={m.r}
         fill="none"
         stroke="currentColor"
-        strokeWidth="15"
-        strokeDasharray="7.96 11.94"
+        strokeWidth={m.toothDepth}
+        strokeDasharray={`${m.pitch * 0.45} ${m.pitch * 0.55}`}
+        strokeDashoffset={phase * m.pitch}
       />
-      <circle cx="50" cy="50" r="29" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      <circle cx="50" cy="50" r="11" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      <circle cx="50" cy="50" r="3.5" fill="currentColor" />
+      <circle r={m.ringR} fill="none" stroke="currentColor" strokeWidth={m.detailSw} />
+      <circle r={m.hubR} fill="none" stroke="currentColor" strokeWidth={m.detailSw} />
+      <circle r={m.dotR} fill="currentColor" />
     </svg>
   )
 }

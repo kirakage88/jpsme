@@ -1,5 +1,6 @@
 import seal from '../assets/seal.png'
 import Gear from './Gear'
+import Rune from './Rune'
 import './Footer.css'
 
 const LINKS = [
@@ -27,9 +28,13 @@ function Footer() {
           <p className="footer__name">
             JPSME<span className="footer__name-accent">-XUC</span>
           </p>
-          <p className="footer__tagline">Mechanical Heart.</p>
+          <p className="footer__tagline">
+            <Rune variant="core" size={13} />
+            Mechanical Heart.
+          </p>
           <p className="footer__full">
-            Junior Philippine Society of Mechanical Engineers, Xavier University Chapter.
+            Junior Philippine Society of Mechanical Engineers, Xavier University
+            Chapter.
           </p>
         </div>
 
@@ -49,7 +54,7 @@ function Footer() {
               <span className="footer__contact-label">{contact.label}</span>
               <a
                 href={contact.href}
-                target={contact.href.startsWith('http') ? '_blank' : undefined}
+                target={contact.href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
               >
                 {contact.value}
@@ -61,12 +66,17 @@ function Footer() {
 
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
-          <span>© {new Date().getFullYear()} JPSME-XUC. All rights reserved.</span>
+          <span>
+            © {new Date().getFullYear()} JPSME-XUC. All rights reserved.
+          </span>
+          <span>
+           John Pacaldo
+          </span>
           <span>Xavier University, Cagayan de Oro City</span>
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 export default Footer

@@ -38,7 +38,7 @@ function Gallery() {
   }, [active, close, step])
 
   return (
-    <section id="gallery" className="section gallery">
+    <section id="gallery" className="section gallery schematic">
       <div className="container">
         <div className="section-head">
           <h2 className="section-title">Org life, in photos</h2>

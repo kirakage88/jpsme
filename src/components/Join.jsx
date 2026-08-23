@@ -1,4 +1,5 @@
 import { ArrowRightIcon, FacebookLogoIcon, InstagramLogoIcon } from '@phosphor-icons/react'
+import Rune from './Rune'
 import qrCode from '../assets/qr_code.jpg'
 import './Join.css'
 
@@ -66,7 +67,8 @@ function Join() {
             ))}
           </ul>
 
-          <a href="mailto:jpsmexuc@gmail.com" className="btn btn--primary join__cta">
+          <a href="mailto:jpsmexuc@gmail.com" className="btn btn--bronze join__cta">
+            <Rune variant="spire" size={15} />
             Email the org
             <ArrowRightIcon size={16} weight="bold" />
           </a>
@@ -74,7 +76,7 @@ function Join() {
 
         <figure className="join__qr plate">
           <img src={qrCode} alt="QR code that links to the JPSME-XUC website" />
-          <figcaption>Scan to open this site on your phone.</figcaption>
+          <figcaption>Scan to open the fb page.</figcaption>
         </figure>
       </div>
     </section>

@@ -7,6 +7,21 @@
   padding-top: 72px;
 }
 
+/* Dial-track tick strip running under the top border. */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(212, 168, 83, 0.4) 0 1px,
+    transparent 1px 10px
+  );
+}
+
 .footer__watermark {
   position: absolute;
   right: -110px;
@@ -42,6 +57,9 @@
 }
 
 .footer__tagline {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   margin-top: 6px;
   font-family: var(--font-heading);
   font-size: 15px;

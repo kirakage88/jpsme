@@ -6,6 +6,7 @@ import Activities from './components/Activities'
 import Gallery from './components/Gallery'
 import Join from './components/Join'
 import Footer from './components/Footer'
+import CogDivider from './components/CogDivider'
 
 function getInitialTheme() {
   const stored = localStorage.getItem('jpsme-theme')
@@ -27,7 +28,9 @@ function App() {
       <main>
         <Hero />
         <About />
+        <CogDivider />
         <Activities />
+        <CogDivider />
         <Gallery />
         <Join />
       </main>

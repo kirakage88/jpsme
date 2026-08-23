@@ -54,7 +54,7 @@ const OFFICERS = [
 
 function About() {
   return (
-    <section id="about" className="section about">
+    <section id="about" className="section about schematic">
       <div className="container">
         <div className="section-head">
           <h2 className="section-title">A home for XU mechanical engineers</h2>

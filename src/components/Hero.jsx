@@ -1,4 +1,4 @@
-import Gear from './Gear'
+import Rune from './Rune'
 import seal from '../assets/seal.png'
 import './Hero.css'
 
@@ -50,7 +50,10 @@ function Hero() {
     <section id="top" className="hero">
       <div className="container hero__inner">
         <div className="hero__content">
-          <p className="hero__kicker">Junior Philippine Society of Mechanical Engineers, Xavier University Chapter</p>
+          <p className="hero__kicker">
+            <Rune variant="trine" size={14} className="hero__kicker-rune" />
+            Junior Philippine Society of Mechanical Engineers, Xavier University Chapter
+          </p>
           <h1 className="hero__title">
             Mechanical
             <br />
@@ -61,7 +64,7 @@ function Hero() {
             University, Mindanao.
           </p>
           <div className="hero__actions">
-            <a href="#join" className="btn btn--gold">
+            <a href="#join" className="btn btn--bronze">
               Join JPSME
             </a>
             <a href="#about" className="btn btn--ghost">
@@ -77,8 +80,6 @@ function Hero() {
             <img src={seal} alt="Official seal of JPSME-XUC" />
             <figcaption className="hero__plate-caption">Official seal, JPSME-XUC</figcaption>
           </div>
-          <Gear className="hero__gear hero__gear--a" size={88} duration={70} />
-          <Gear className="hero__gear hero__gear--b" size={54} duration={70} reverse />
         </figure>
       </div>
     </section>
