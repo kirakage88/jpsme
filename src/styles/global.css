@@ -63,11 +63,11 @@ button {
   padding-block: 112px;
 }
 
-/* Blueprint registration mark: one short gold rule above each section title. */
+/* Blueprint registration mark: one short gold rule with a deco diamond above each section title. */
 .section-head {
   margin-bottom: 56px;
   position: relative;
-  padding-top: 22px;
+  padding-top: 26px;
 }
 
 .section-head::before {
@@ -78,6 +78,17 @@ button {
   width: 64px;
   height: 2px;
   background: var(--gold);
+}
+
+.section-head::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 74px;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
 }
 
 .section-title {
@@ -109,6 +120,24 @@ button {
   pointer-events: none;
 }
 
+/* Technical-drawing corner ticks inside the frame. */
+.plate::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--gold), var(--gold)) top left / 16px 1px,
+    linear-gradient(var(--gold), var(--gold)) top left / 1px 16px,
+    linear-gradient(var(--gold), var(--gold)) top right / 16px 1px,
+    linear-gradient(var(--gold), var(--gold)) top right / 1px 16px,
+    linear-gradient(var(--gold), var(--gold)) bottom left / 16px 1px,
+    linear-gradient(var(--gold), var(--gold)) bottom left / 1px 16px,
+    linear-gradient(var(--gold), var(--gold)) bottom right / 16px 1px,
+    linear-gradient(var(--gold), var(--gold)) bottom right / 1px 16px;
+  background-repeat: no-repeat;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -121,6 +150,7 @@ button {
   border: 1px solid transparent;
   text-decoration: none;
   white-space: nowrap;
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
   transition: transform 0.18s ease, background-color 0.2s ease, border-color 0.2s ease,
     color 0.2s ease;
 }
@@ -131,6 +161,11 @@ button {
 
 .btn:active {
   transform: translateY(0);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--accent);
 }
 
 .btn--primary {
@@ -168,6 +203,24 @@ button {
 
 section[id] {
   scroll-margin-top: 60px;
+}
+
+@keyframes gear-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.gear {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gear {
+    animation: gear-spin var(--gear-duration, 80s) linear infinite;
+    animation-direction: var(--gear-direction, normal);
+  }
 }
 
 @media (max-width: 720px) {

@@ -1,4 +1,5 @@
 import seal from '../assets/seal.png'
+import Gear from './Gear'
 import './Footer.css'
 
 const LINKS = [
@@ -19,6 +20,7 @@ const CONTACTS = [
 function Footer() {
   return (
     <footer className="footer">
+      <Gear className="footer__watermark" size={420} duration={140} />
       <div className="container footer__grid">
         <div className="footer__brand">
           <img src={seal} alt="" className="footer__seal" />

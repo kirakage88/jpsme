@@ -66,6 +66,9 @@
 }
 
 .about__block-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 400;
@@ -73,6 +76,15 @@
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 22px;
+}
+
+.about__block-label::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
 }
 
 .about__achievements {

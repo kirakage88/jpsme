@@ -1,18 +1,46 @@
 .hero {
+  position: relative;
   min-height: 100svh;
   display: flex;
   align-items: center;
   padding-top: 96px;
-  padding-bottom: 64px;
+  padding-bottom: 72px;
   background: var(--navy);
   border-bottom: 1px solid rgba(212, 168, 83, 0.25);
+  overflow: hidden;
 }
 
 [data-theme='dark'] .hero {
   background: #050a15;
 }
 
+/* Hextech atmosphere: faint gold and steel light, kept low so type stays readable. */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 720px;
+  height: 720px;
+  top: -260px;
+  right: -180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 168, 83, 0.12), transparent 62%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  bottom: -300px;
+  left: -200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(127, 166, 217, 0.1), transparent 62%);
+  pointer-events: none;
+}
+
 .hero__inner {
+  position: relative;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
@@ -20,28 +48,37 @@
 }
 
 .hero__kicker {
-  font-size: 13px;
-  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12.5px;
+  letter-spacing: 2.6px;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 24px;
-  max-width: 46ch;
+  margin-bottom: 26px;
+  max-width: 48ch;
   line-height: 1.8;
+}
+
+.hero__kicker::before {
+  content: '';
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
 }
 
 .hero__title {
   font-size: clamp(72px, 11vw, 148px);
   line-height: 0.92;
   letter-spacing: 3px;
+  text-transform: uppercase;
   color: #fff;
 }
 
 .hero__title span {
   color: var(--gold);
-}
-
-.hero__title {
-  text-wrap: balance;
 }
 
 .hero__sub {
@@ -60,39 +97,150 @@
 }
 
 .hero__artifact {
-  justify-self: end;
-  width: min(34vw, 360px);
-  text-align: center;
+  position: relative;
+  justify-self: center;
+  display: grid;
+  place-items: center;
 }
 
-.hero__artifact img {
+.hero__plate {
+  position: relative;
+  width: min(30vw, 320px);
+  background: rgba(212, 168, 83, 0.05);
+  backdrop-filter: blur(2px);
+  text-align: center;
+  z-index: 1;
+}
+
+.hero__plate img {
   width: 100%;
   aspect-ratio: 1;
   object-fit: contain;
 }
 
-.hero__artifact-caption {
+.hero__plate-caption {
   margin-top: 12px;
-  font-size: 12px;
-  letter-spacing: 2px;
+  font-size: 11.5px;
+  letter-spacing: 2.4px;
   text-transform: uppercase;
   color: rgba(212, 168, 83, 0.75);
+}
+
+.hero__ring {
+  position: absolute;
+  inset: -17%;
+  width: 134%;
+  height: 134%;
+  color: var(--gold);
+  transform-box: fill-box;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.hero__ring--outer {
+  inset: -27%;
+  width: 154%;
+  height: 154%;
+  color: var(--steel);
+  opacity: 0.35;
+}
+
+.hero__gear {
+  position: absolute;
+  color: var(--gold);
+  z-index: 2;
+}
+
+.hero__gear--a {
+  top: -34px;
+  left: -34px;
+  opacity: 0.9;
+}
+
+.hero__gear--b {
+  bottom: -22px;
+  right: -22px;
+  color: var(--steel);
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__ring--spin {
+    animation: gear-spin 160s linear infinite;
+  }
+
+  .hero__content > * {
+    opacity: 0;
+    animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero__content > *:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+
+  .hero__content > *:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .hero__content > *:nth-child(3) {
+    animation-delay: 0.25s;
+  }
+
+  .hero__content > *:nth-child(4) {
+    animation-delay: 0.35s;
+  }
+
+  .hero__artifact {
+    opacity: 0;
+    animation: hero-fade 1s ease 0.35s forwards;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-fade {
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 900px) {
   .hero__inner {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 64px;
   }
 
-  .hero__artifact {
-    justify-self: start;
-    width: min(64vw, 280px);
+  .hero__plate {
+    width: min(60vw, 280px);
+  }
+
+  .hero__gear--a {
+    top: -22px;
+    left: -22px;
   }
 }
 
 @media (max-width: 560px) {
   .hero__actions .btn {
     width: 100%;
+  }
+
+  .hero__gear--a {
+    top: -18px;
+    left: -18px;
+  }
+
+  .hero__gear--b {
+    bottom: -14px;
+    right: -14px;
   }
 }

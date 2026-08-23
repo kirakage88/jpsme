@@ -1,11 +1,23 @@
 .footer {
+  position: relative;
+  overflow: hidden;
   background: var(--navy-deep);
   border-top: 1px solid rgba(212, 168, 83, 0.25);
   color: #aebad6;
   padding-top: 72px;
 }
 
+.footer__watermark {
+  position: absolute;
+  right: -110px;
+  bottom: -120px;
+  color: var(--gold);
+  opacity: 0.06;
+  pointer-events: none;
+}
+
 .footer__grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1.3fr 0.7fr 1fr;
   gap: 56px;

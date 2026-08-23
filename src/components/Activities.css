@@ -29,7 +29,9 @@
 }
 
 .activities__card--navy {
-  background: var(--navy);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(212, 168, 83, 0.14), transparent 52%),
+    var(--navy);
   color: #aebad6;
 }
 
@@ -52,7 +54,9 @@
 }
 
 .activities__card--navy:hover {
-  background: var(--navy-2);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(212, 168, 83, 0.2), transparent 52%),
+    var(--navy-2);
 }
 
 .activities__card--gold:hover {

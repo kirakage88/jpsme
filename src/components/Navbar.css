@@ -12,6 +12,34 @@
   border-bottom-color: rgba(212, 168, 83, 0.22);
 }
 
+/* Scroll progress hairline (progressive enhancement, no JS). */
+.nav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .nav::after {
+      animation: nav-progress linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+@keyframes nav-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
 .nav__inner {
   display: flex;
   align-items: center;
