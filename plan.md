@@ -22,7 +22,7 @@
 
 - Tangram puzzle/solution images: **user provides** real images → dropped at `src/assets/tangram/` as `puzzle-N.svg` / `solution-N.svg` (PNG ok)
 - Upcoming Events section: **omitted for now** (revisit when real dates exist)
-- No React Router — single-page scroll with nav anchors (QR code is a plain link to the site)
+- Tangram Puzzle Wheel lives on its **own page** (`#/puzzles`) via `react-router-dom` HashRouter (GH Pages friendly); home sections scrolled via `#/?s=about` style deep links
 - "What We Do" cards: blend `about.md` (Leadership, Exposure, Student Assistance) + prompt (Workshops, Outreach/Community)
 - **Dark mode toggle: included** (Arcane-dark variant, persisted in localStorage)
 - GitHub Pages deployment: **deferred** until site is built
@@ -47,23 +47,24 @@
 - ~~Upcoming Events~~ — omitted
 
 ### Phase 2 — Tangram Puzzle Wheel
-- `src/data/puzzles.json` — 6–10 entries (id, name, puzzleImage, solutionImage)
-- **Wheel** — spinning wheel, slots, spin-to-select animation, click-to-reveal
+- `src/data/puzzles.js` — 12 entries (id, name, puzzleImage, solutionImage)
+- **Wheel** — spinning wheel with 12 slots, spin-to-select animation, click-to-select
 - **PuzzleDisplay** — puzzle (left) | solution (right), fade-in reveal
-- **Timer** — Start/Stop, MM:SS, reset
+- **Timer** — Start/Stop/Reset, MM:SS, reset on new puzzle
 - Mobile-friendly touch interactions
-- Wire data to user-provided images at `src/assets/tangram/`; neutral placeholder until files arrive
+- Placeholders at `src/assets/tangram/` (`puzzle-01..12.svg`, `solution-01..12.svg`); drop real images over these exact filenames to swap
 
-### Phase 3 — Polish, Responsive & Dark Mode
+### Phase 3 — Polish, Responsive & Dark Mode ✅ done
 - Mobile-first responsive pass on every section
-- Accessibility: semantic HTML, ARIA labels, keyboard nav (lightbox + wheel), focus styles
+- Accessibility: skip link, lightbox focus trap + focus restore, wheel aria (busy/status announcements), timer announcements, sr-only util
 - Dark-mode toggle fully wired + persisted (localStorage)
-- Micro-interactions: scroll-reveal, hover states, smooth wheel spin
+- Micro-interactions: entrance choreography, hover states, gears, scroll-progress hairline, smooth wheel spin (reduced-motion safe)
 
-### Phase 4 — Deployment (deferred; do when requested)
-- `homepage` in `package.json`, `base: '/<repo>/'` in `vite.config.js`
-- `.github/workflows/deploy.yml` (build + deploy on push to main) and/or `gh-pages` + `npm run deploy`
-- Update `README.md` with setup + deploy instructions
+### Phase 4 — Deployment (GitHub Pages) ✅ done
+- `homepage` = `https://kirakage88.github.io/jpsme/`, `base: '/jpsme/'` in `vite.config.js`
+- `.github/workflows/deploy.yml` (build + deploy on push to main) + `npm run deploy` (gh-pages fallback)
+- `public/.nojekyll`, relative favicon href
+- README rewritten with setup, content update, and deploy instructions
 
 ## Commands
 

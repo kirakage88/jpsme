@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { ListIcon, MoonIcon, SunIcon } from '@phosphor-icons/react'
 import logo from '../assets/logo.png'
 import './Navbar.css'
 
 const LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#activities', label: 'What We Do' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#join', label: 'Join' },
+  { to: '/?s=about', label: 'About' },
+  { to: '/?s=activities', label: 'What We Do' },
+  { to: '/?s=gallery', label: 'Gallery' },
+  { to: '/?s=join', label: 'Join' },
 ]
 
 function Navbar({ theme, onToggleTheme }) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -22,21 +24,29 @@ function Navbar({ theme, onToggleTheme }) {
   }, [])
 
   return (
-    <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
+    <header className={`nav ${scrolled || pathname !== '/' ? 'nav--scrolled' : ''}`}>
       <div className="container nav__inner">
-        <a className="nav__brand" href="#top" onClick={() => setOpen(false)}>
+        <Link className="nav__brand" to="/" onClick={() => setOpen(false)}>
           <img src={logo} alt="JPSME-XUC logo" className="nav__logo" />
           <span className="nav__name">
             JPSME<span className="nav__name-accent">-XUC</span>
           </span>
-        </a>
+        </Link>
 
         <nav className={`nav__links ${open ? 'nav__links--open' : ''}`} aria-label="Primary">
-          {LINKS.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>
-              {link.label}
-            </a>
-          ))}
+          {LINKS.map((link) => {
+            const active = pathname === '/puzzles' && link.to === '/puzzles'
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={active ? 'nav__link--active' : ''}
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
         </nav>
 
         <div className="nav__controls">

@@ -1,13 +1,15 @@
+import { Link } from 'react-router-dom'
 import seal from '../assets/seal.png'
 import Gear from './Gear'
 import Rune from './Rune'
 import './Footer.css'
 
 const LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#activities', label: 'What We Do' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#join', label: 'Join' },
+  { to: '/?s=about', label: 'About' },
+  { to: '/?s=activities', label: 'What We Do' },
+  { to: '/?s=gallery', label: 'Gallery' },
+  { to: '/puzzles', label: 'Puzzles' },
+  { to: '/?s=join', label: 'Join' },
 ]
 
 const CONTACTS = [
@@ -41,9 +43,9 @@ function Footer() {
         <nav className="footer__col" aria-label="Footer">
           <h3>Sections</h3>
           {LINKS.map((link) => (
-            <a key={link.href} href={link.href}>
+            <Link key={link.to} to={link.to}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -69,9 +71,7 @@ function Footer() {
           <span>
             © {new Date().getFullYear()} JPSME-XUC. All rights reserved.
           </span>
-          <span>
-           John Pacaldo
-          </span>
+          <span>Designed and Developed by John Pacaldo</span>
           <span>Xavier University, Cagayan de Oro City</span>
         </div>
       </div>

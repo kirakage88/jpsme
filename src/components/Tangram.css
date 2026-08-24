@@ -1,0 +1,296 @@
+.tangram {
+  background: var(--bg);
+}
+
+.tangram__stage {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+/* ---- Wheel ---- */
+.tangram__wheelzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  position: relative;
+}
+
+.tangram__wheel {
+  position: relative;
+  width: min(340px, 78vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    var(--navy) 0deg 15deg,
+    var(--navy-2) 15deg 30deg
+  );
+  border: 1px solid var(--gold-wash-border);
+  box-shadow:
+    inset 0 0 0 10px rgba(7, 18, 40, 0.55),
+    0 24px 50px rgba(11, 27, 61, 0.22);
+  transition: transform 4.4s cubic-bezier(0.12, 0.78, 0.16, 1);
+}
+
+/* Gold spoke hairlines between sectors. */
+.tangram__wheel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg 14.6deg,
+    rgba(212, 168, 83, 0.28) 14.6deg 15.4deg,
+    transparent 15.4deg 30deg
+  );
+  pointer-events: none;
+}
+
+.tangram__sector {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  color: var(--gold);
+  font-family: var(--font-heading);
+  font-size: 16px;
+  letter-spacing: 1px;
+  transform: rotate(var(--r)) translateY(calc(min(340px, 78vw) / -2 + 32px));
+  transition: color 0.2s ease, filter 0.2s ease;
+  z-index: 2;
+}
+
+.tangram__sector:hover {
+  color: #fff;
+  filter: drop-shadow(0 0 8px rgba(212, 168, 83, 0.8));
+}
+
+.tangram__sector:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.tangram__sector:disabled:hover {
+  color: var(--gold);
+  filter: none;
+}
+
+.tangram__hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 40% 35%, var(--navy-2), var(--navy));
+  border: 1px solid rgba(212, 168, 83, 0.55);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+/* Hub rides with the wheel; the gear's own spin is disabled so it reads as a bolt. */
+.tangram__hub-gear {
+  color: var(--gold);
+  animation: none;
+}
+
+.tangram__pointer {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+}
+
+.tangram__spin {
+  min-width: 200px;
+}
+
+.tangram__spin:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+/* ---- Display ---- */
+.tangram__display {
+  animation: tangram-in 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes tangram-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tangram__num {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.tangram__title h3 {
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.tangram__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.tangram__card {
+  background: var(--surface);
+  text-align: center;
+}
+
+.tangram__card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.tangram__card figcaption {
+  margin-top: 10px;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--accent);
+  text-align: center;
+}
+
+.tangram__timer {
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px 24px;
+}
+
+.tangram__timer-label {
+  grid-column: 1;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--text-muted);
+}
+
+.tangram__timer-value {
+  grid-column: 2;
+  font-family: var(--font-heading);
+  font-size: 46px;
+  letter-spacing: 3px;
+  color: var(--heading);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 420px) {
+  .tangram__timer-value {
+    font-size: 38px;
+  }
+}
+
+.tangram__timer-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tangram__btn {
+  padding: 11px 22px;
+  font-size: 13px;
+}
+
+.tangram__btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+  filter: none;
+}
+
+.tangram__btn--plain {
+  background: transparent;
+  border-color: var(--line);
+  color: var(--accent);
+}
+
+.tangram__btn--plain:hover {
+  border-color: var(--accent);
+}
+
+.tangram__note {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ---- Empty state ---- */
+.tangram__empty {
+  text-align: center;
+  padding: 48px 32px;
+  border: 1px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: tangram-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tangram__empty-gear {
+  color: var(--bronze);
+  opacity: 0.8;
+}
+
+.tangram__empty h3 {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tangram__empty p {
+  max-width: 46ch;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+@media (max-width: 980px) {
+  .tangram__stage {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+}
+
+@media (max-width: 560px) {
+  .tangram__cards {
+    grid-template-columns: 1fr;
+  }
+}

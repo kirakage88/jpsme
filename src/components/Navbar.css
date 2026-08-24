@@ -108,6 +108,14 @@
   right: 0;
 }
 
+.nav__links a.nav__link--active {
+  color: #fff;
+}
+
+.nav__links a.nav__link--active::after {
+  right: 0;
+}
+
 .nav__controls {
   display: flex;
   align-items: center;

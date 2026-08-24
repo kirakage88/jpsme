@@ -76,7 +76,7 @@ function Join() {
 
         <figure className="join__qr plate">
           <img src={qrCode} alt="QR code that links to the JPSME-XUC website" />
-          <figcaption>Scan to open the fb page.</figcaption>
+          <figcaption>Scan to know more about us!</figcaption>
         </figure>
       </div>
     </section>

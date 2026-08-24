@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Rune from './Rune'
 import seal from '../assets/seal.png'
 import './Hero.css'
@@ -64,12 +65,12 @@ function Hero() {
             University, Mindanao.
           </p>
           <div className="hero__actions">
-            <a href="#join" className="btn btn--bronze">
+            <Link to="/?s=join" className="btn btn--bronze">
               Join JPSME
-            </a>
-            <a href="#about" className="btn btn--ghost">
+            </Link>
+            <Link to="/?s=about" className="btn btn--ghost">
               Meet the org
-            </a>
+            </Link>
           </div>
         </div>
 
