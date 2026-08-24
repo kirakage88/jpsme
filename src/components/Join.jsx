@@ -1,5 +1,6 @@
 import { ArrowRightIcon, FacebookLogoIcon, InstagramLogoIcon } from '@phosphor-icons/react'
 import Rune from './Rune'
+import Reveal from './Reveal'
 import qrCode from '../assets/qr_code.jpg'
 import './Join.css'
 
@@ -28,16 +29,16 @@ function Join() {
   return (
     <section id="join" className="section join">
       <div className="container join__inner">
-        <div className="join__content">
-          <div className="section-head">
+<div className="join__content">
+          <Reveal className="section-head">
             <h2 className="section-title">Join JPSME-XUC</h2>
             <p className="section-sub">
               Open to every Mechanical Engineering student of Xavier University. Message us on any
               channel below and we will walk you through it.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="join__socials">
+          <Reveal className="join__socials" delay={120}>
             {SOCIALS.map((social) => {
               const Icon = social.icon
               return (
@@ -56,28 +57,30 @@ function Join() {
                 </a>
               )
             })}
-          </div>
+          </Reveal>
 
-          <ul className="join__emails">
+          <Reveal as="ul" className="join__emails" delay={200}>
             {EMAILS.map((email) => (
               <li key={email.address}>
                 <span className="join__email-label">{email.label}</span>
                 <a href={`mailto:${email.address}`}>{email.address}</a>
               </li>
             ))}
-          </ul>
+          </Reveal>
 
-          <a href="mailto:jpsmexuc@gmail.com" className="btn btn--bronze join__cta">
-            <Rune variant="spire" size={15} />
-            Email the org
-            <ArrowRightIcon size={16} weight="bold" />
-          </a>
+          <Reveal delay={260}>
+            <a href="mailto:jpsmexuc@gmail.com" className="btn btn--bronze join__cta">
+              <Rune variant="spire" size={15} />
+              Email the org
+              <ArrowRightIcon size={16} weight="bold" />
+            </a>
+          </Reveal>
         </div>
 
-        <figure className="join__qr plate">
+        <Reveal as="figure" className="join__qr plate" from="right" delay={140}>
           <img src={qrCode} alt="QR code that links to the JPSME-XUC website" />
-          <figcaption>Scan to know more about us!</figcaption>
-        </figure>
+          <figcaption>Scan to open this site on your phone.</figcaption>
+        </Reveal>
       </div>
     </section>
   )

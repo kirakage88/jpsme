@@ -92,6 +92,27 @@ main:focus {
   outline: none;
 }
 
+/* Scroll-reveal (toggle via Reveal component). Transform + opacity only. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal--left {
+  transform: translateX(-28px);
+}
+
+.reveal--right {
+  transform: translateX(28px);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: none;
+}
+
 .container {
   width: min(1160px, 100% - 48px);
   margin-inline: auto;

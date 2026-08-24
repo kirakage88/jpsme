@@ -11,6 +11,10 @@
   border: 1px solid var(--line);
 }
 
+.activities__grid .activities__card {
+  height: 100%;
+}
+
 .activities__card {
   background: var(--surface);
   padding: 34px 30px 38px;

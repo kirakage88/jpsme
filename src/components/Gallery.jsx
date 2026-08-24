@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { CaretLeftIcon, CaretRightIcon, XIcon } from '@phosphor-icons/react'
+import Reveal from './Reveal'
 import img1 from '../assets/images/img (1).jpg'
 import img2 from '../assets/images/img (2).jpg'
 import img3 from '../assets/images/img (3).jpg'
@@ -68,22 +69,23 @@ function Gallery() {
   return (
     <section id="gallery" className="section gallery schematic">
       <div className="container">
-        <div className="section-head">
+        <Reveal className="section-head">
           <h2 className="section-title">Org life, in photos</h2>
           <p className="section-sub">Events, competitions, and everything in between.</p>
-        </div>
+        </Reveal>
 
         <div className="gallery__grid">
           {PHOTOS.map((src, i) => (
-            <button
-              key={src}
-              type="button"
-              className={`gallery__item gallery__item--${SPANS[i]}`}
-              onClick={() => setActive(i)}
-              aria-label={`Open photo ${i + 1} of ${PHOTOS.length}`}
-            >
-              <img src={src} alt={`JPSME-XUC event photo ${i + 1}`} loading="lazy" />
-            </button>
+            <Reveal key={src} className={`gallery__item--${SPANS[i]}`} delay={(i % 6) * 70}>
+              <button
+                type="button"
+                className="gallery__item gallery__item--fill"
+                onClick={() => setActive(i)}
+                aria-label={`Open photo ${i + 1} of ${PHOTOS.length}`}
+              >
+                <img src={src} alt={`JPSME-XUC event photo ${i + 1}`} loading="lazy" />
+              </button>
+            </Reveal>
           ))}
         </div>
       </div>

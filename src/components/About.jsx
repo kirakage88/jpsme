@@ -1,3 +1,4 @@
+import Reveal from './Reveal'
 import './About.css'
 
 const VALUES = [
@@ -56,12 +57,12 @@ function About() {
   return (
     <section id="about" className="section about schematic">
       <div className="container">
-        <div className="section-head">
+        <Reveal className="section-head">
           <h2 className="section-title">A home for XU mechanical engineers</h2>
-        </div>
+        </Reveal>
 
         <div className="about__grid">
-          <div className="about__main">
+          <Reveal className="about__main">
             <p className="about__mission">
               JPSME-XUC is the official governing student organization of Mechanical Engineering
               students at Xavier University, Mindanao. It serves the ME community through academic
@@ -73,50 +74,52 @@ function About() {
               To be the leading student organization in Mindanao: one that develops mechanical
               engineering students, their character, and the future of the field.
             </blockquote>
-          </div>
+          </Reveal>
 
-          <div className="about__values">
+          <Reveal className="about__values" delay={140}>
             {VALUES.map((value) => (
               <div key={value.title} className="about__value">
                 <h3>{value.title}</h3>
                 <p>{value.text}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
 
         <div className="about__record">
-          <h3 className="about__block-label">Track record</h3>
+          <Reveal className="about__block-label">Track record</Reveal>
           <ul className="about__achievements">
-            {ACHIEVEMENTS.map((item) => (
-              <li key={item.event}>
+            {ACHIEVEMENTS.map((item, i) => (
+              <Reveal key={item.event} as="li" delay={i * 70}>
                 <span className="about__place">{item.place}</span>
                 <span className="about__event">{item.event}</span>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </div>
 
         <div className="about__leadership">
-          <h3 className="about__block-label">Executive Board</h3>
+          <Reveal className="about__block-label">Executive Board</Reveal>
           <div className="about__board">
-            {EXECUTIVE_BOARD.map((member) => (
-              <div key={member.name} className="about__member">
-                <span className="about__member-name">{member.name}</span>
-                <span className="about__member-role">{member.role}</span>
-              </div>
+            {EXECUTIVE_BOARD.map((member, i) => (
+              <Reveal key={member.name} delay={i * 90}>
+                <div className="about__member">
+                  <span className="about__member-name">{member.name}</span>
+                  <span className="about__member-role">{member.role}</span>
+                </div>
+              </Reveal>
             ))}
           </div>
 
-          <h3 className="about__block-label">Committee heads and officers</h3>
-          <div className="about__officers">
+          <Reveal className="about__block-label">Committee heads and officers</Reveal>
+          <Reveal className="about__officers" delay={100}>
             {OFFICERS.map((officer) => (
               <span key={officer.name} className="about__chip">
                 <strong>{officer.name}</strong>
                 <small>{officer.role}</small>
               </span>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

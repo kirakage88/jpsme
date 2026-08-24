@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { GearSixIcon } from '@phosphor-icons/react'
 import PUZZLES from '../data/puzzles'
 import Gear from './Gear'
+import Reveal from './Reveal'
 import './Tangram.css'
 
 const SECTOR = 360 / PUZZLES.length
@@ -59,7 +60,7 @@ function Tangram() {
     <section id="puzzles" className="section tangram schematic">
       <div className="container">
         <div className="tangram__stage">
-          <div className="tangram__wheelzone">
+          <Reveal className="tangram__wheelzone">
             <div
               className="tangram__wheel"
               aria-busy={spinning}
@@ -94,7 +95,7 @@ function Tangram() {
               <GearSixIcon size={17} weight="duotone" />
               {spinning ? 'Spinning...' : 'Spin the wheel'}
             </button>
-          </div>
+          </Reveal>
 
           {selected ? (
             <div className="tangram__display" key={selected.id}>
@@ -162,14 +163,14 @@ function Tangram() {
               </p>
             </div>
           ) : (
-            <div className="tangram__empty">
+            <Reveal className="tangram__empty" delay={120}>
               <Gear size={56} duration={26} className="tangram__empty-gear" />
               <h3>Ready when you are</h3>
               <p>
                 Spin the wheel for a random puzzle or tap a numbered slot. The puzzle and its
                 solution will appear side by side, and the timer starts on your cue.
               </p>
-            </div>
+            </Reveal>
           )}
         </div>
       </div>

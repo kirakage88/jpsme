@@ -6,6 +6,7 @@ import {
   ShieldCheckIcon,
   TrophyIcon,
 } from '@phosphor-icons/react'
+import Reveal from './Reveal'
 import './Activities.css'
 
 const ACTIVITIES = [
@@ -51,25 +52,28 @@ function Activities() {
   return (
     <section id="activities" className="section activities">
       <div className="container">
-        <div className="section-head">
+        <Reveal className="section-head">
           <h2 className="section-title">What the org actually does</h2>
           <p className="section-sub">
             Six working areas, one goal: ME students who leave XU sharper than they arrived.
           </p>
-        </div>
+        </Reveal>
 
         <div className="activities__grid">
-          {ACTIVITIES.map((activity) => {
+          {ACTIVITIES.map((activity, i) => {
             const Icon = activity.icon
             return (
-              <article
+              <Reveal
                 key={activity.title}
-                className={`activities__card activities__card--${activity.variant}`}
+                className={`activities__card--${activity.variant}`}
+                delay={(i % 3) * 90}
               >
-                <Icon size={30} weight="duotone" className="activities__icon" />
-                <h3>{activity.title}</h3>
-                <p>{activity.text}</p>
-              </article>
+                <article className="activities__card">
+                  <Icon size={30} weight="duotone" className="activities__icon" />
+                  <h3>{activity.title}</h3>
+                  <p>{activity.text}</p>
+                </article>
+              </Reveal>
             )
           })}
         </div>

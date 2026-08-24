@@ -126,6 +126,10 @@
   margin-bottom: 48px;
 }
 
+.about__board .about__member {
+  height: 100%;
+}
+
 .about__member {
   background: var(--surface);
   padding: 26px 24px;
